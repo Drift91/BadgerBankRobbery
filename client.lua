@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
 			-- Bank Code
 			for _, bankcoords in pairs(config.bankcoords) do
 			if (config.enableBanks == true) then
-				if (#(vector3(coords.x, coords.y, coords.z) - vector3(bankcoords.x, bankcoords.y, bankcoords.z)) < 5.0) then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(bankcoords.x, bankcoords.y, bankcoords.z)) < 2.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the bank')
 					if IsControlJustReleased(0, 38) then -- E key
 						TriggerServerEvent('BadgerBankRobbery:SetActive', true)
@@ -113,7 +113,7 @@ Citizen.CreateThread(function()
 			-- Ammunation Code
 			for _, ammunationcoords in pairs(config.ammunationcoords) do
 			if (config.enableAmmunations == true) then
-				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ammunationcoords.x, ammunationcoords.y, ammunationcoords.z)) < 5.0) then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ammunationcoords.x, ammunationcoords.y, ammunationcoords.z)) < 2.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the Ammunation')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', ammunationcoords.alarm)
@@ -167,7 +167,7 @@ Citizen.CreateThread(function()
 			-- 24/7 Code
 			for _, shopcoords in pairs(config.shopcoords) do
 			if (config.enable247 == true) then
-				if (#(vector3(coords.x, coords.y, coords.z) - vector3(shopcoords.x, shopcoords.y, shopcoords.z)) < 5.0) then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(shopcoords.x, shopcoords.y, shopcoords.z)) < 2.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the 24/7')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', shopcoords.alarm)
@@ -221,7 +221,7 @@ Citizen.CreateThread(function()
 			-- LTD Code
 			for _, ltdcoords in pairs(config.ltdcoords) do
 			if (config.enableGasStations == true) then
-				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ltdcoords.x, ltdcoords.y, ltdcoords.z)) < 5.0) then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ltdcoords.x, ltdcoords.y, ltdcoords.z)) < 2.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the LTD Gas Station')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', ltdcoords.alarm)
@@ -275,7 +275,7 @@ Citizen.CreateThread(function()
 			-- Liquor Store Code
 			for _, liquorcoords in pairs(config.liquorcoords) do
 			if (config.enableLiquor == true) then
-				if (#(vector3(coords.x, coords.y, coords.z) - vector3(liquorcoords.x, liquorcoords.y, liquorcoords.z)) < 5.0) then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(liquorcoords.x, liquorcoords.y, liquorcoords.z)) < 2.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the Liquor Store')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', liquorcoords.alarm)
