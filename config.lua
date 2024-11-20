@@ -11,6 +11,12 @@ config = {
 	enableBanks = true, -- Enables all Banks to be robbed.
 	enableLiquor = true, -- Enables all Liquor Stores to be robbed.
 
+	payoutAmmunations = 500,
+	payout247 = 5000,
+	payoutGasStations = 5000,
+	payoutBanks = 20000,
+	payoutLiquor = 5000,
+
 	robberySuccess = "^2^*The robbery was successful. ^5^rNext robbery can be activated in ^1^*15 ^5^rminutes.",
 	robberyFailed = "^1^*The robbery has failed. ^5^rNext robbery can be activited in ^1^*15 ^5^rminutes",
 

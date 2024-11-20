@@ -1,6 +1,38 @@
 -------------------------
 --- BadgerBankRobbery ---
 -------------------------
+NDCore = exports["ND_Core"]:GetCoreObject()
+
+RegisterNetEvent("BadgerBankRobbery:GiveRewardBank")
+AddEventHandler("BadgerBankRobbery:GiveRewardBank", function(player)
+	local player = source
+	NDCore.Functions.AddMoney(config.payoutBanks, player, "cash")
+end)
+
+RegisterNetEvent("BadgerBankRobbery:GiveRewardAmmo")
+AddEventHandler("BadgerBankRobbery:GiveRewardAmmo", function(player)
+	local player = source
+	NDCore.Functions.AddMoney(config.payoutAmmunations, player, "cash")
+end)
+
+RegisterNetEvent("BadgerBankRobbery:GiveRewardLTD")
+AddEventHandler("BadgerBankRobbery:GiveRewardLTD", function(player)
+	local player = source
+	NDCore.Functions.AddMoney(config.payoutGasStations, player, "cash")
+end)
+
+RegisterNetEvent("BadgerBankRobbery:GiveReward247")
+AddEventHandler("BadgerBankRobbery:GiveReward247", function(player)
+	local player = source
+	NDCore.Functions.AddMoney(config.payout247, player, "cash")
+end)
+
+RegisterNetEvent("BadgerBankRobbery:GiveRewardLiq")
+AddEventHandler("BadgerBankRobbery:GiveRewardLiq", function(player)
+	local player = source
+	NDCore.Functions.AddMoney(config.payoutLiquor, player, "cash")
+end)
+
 --- Server ---
 robberyActive = false
 RegisterNetEvent('BadgerBankRobbery:IsActive')

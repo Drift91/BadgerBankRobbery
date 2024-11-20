@@ -85,6 +85,7 @@ Citizen.CreateThread(function()
 							if not status and not IsEntityDead(GetPlayerPed(-1)) then
 								DisplayNotification('~g~Success: You have robbed the bank successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
+								TriggerServerEvent('BadgerBankRobbery:GiveRewardBank', true)
 							else
 								DisplayNotification('~r~Failed: Your bank robbery has failed.')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberyFailed)
@@ -138,6 +139,7 @@ Citizen.CreateThread(function()
 							if not status and not IsEntityDead(GetPlayerPed(-1)) then
 								DisplayNotification('~g~Success: You have robbed the Ammunation successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
+								TriggerServerEvent('BadgerBankRobbery:GiveRewardAmmo', true)
 							else
 								DisplayNotification('~r~Failed: Your Ammunation robbery has failed.')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberyFailed)
@@ -191,6 +193,7 @@ Citizen.CreateThread(function()
 							if not status and not IsEntityDead(GetPlayerPed(-1)) then
 								DisplayNotification('~g~Success: You have robbed the 24/7 successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
+								TriggerServerEvent('BadgerBankRobbery:GiveReward247', true)
 							else
 								DisplayNotification('~r~Failed: Your 24/7 robbery has failed.')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberyFailed)
@@ -244,6 +247,7 @@ Citizen.CreateThread(function()
 							if not status and not IsEntityDead(GetPlayerPed(-1)) then
 								DisplayNotification('~g~Success: You have robbed the LTD Gas Station successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
+								TriggerServerEvent('BadgerBankRobbery:GiveRewardLTD', true)
 							else
 								DisplayNotification('~r~Failed: Your LTD Gas Station robbery has failed.')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberyFailed)
@@ -295,6 +299,7 @@ Citizen.CreateThread(function()
 							if not status and not IsEntityDead(GetPlayerPed(-1)) then
 								DisplayNotification('~g~Success: You have robbed the Liquor Store successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
+								TriggerServerEvent('BadgerBankRobbery:GiveRewardLiq', true)
 							else
 								DisplayNotification('~r~Failed: Your Liquor Store robbery has failed.')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberyFailed)
