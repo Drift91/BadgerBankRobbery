@@ -13,41 +13,53 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		if not robberyActive then
+			local player = PlayerPedId()
+			local coords = GetEntityCoords(player)
+
 			if (config.enableBanks == true) then
 				for _, bankcoords in pairs(config.bankcoords) do
-				DrawMarker(27, bankcoords.x, bankcoords.y, bankcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 4.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					if not (#(coords - vector3(bankcoords.x, bankcoords.y, bankcoords.z)) > 30.0) then
+						DrawMarker(27, bankcoords.x, bankcoords.y, bankcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 4.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					end
 				end
 			end
 
 			if (config.enableAmmunations == true) then
 				for _, ammunationcoords in pairs(config.ammunationcoords) do
-				DrawMarker(27, ammunationcoords.x, ammunationcoords.y, ammunationcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					if not (#(coords - vector3(ammunationcoords.x, ammunationcoords.y, ammunationcoords.z)) > 30.0) then
+						DrawMarker(27, ammunationcoords.x, ammunationcoords.y, ammunationcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					end
 				end
 			end
 
 			if (config.enable247 == true) then
 				for _, shopcoords in pairs(config.shopcoords) do
-				DrawMarker(27, shopcoords.x, shopcoords.y, shopcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					if not (#(coords - vector3(shopcoords.x, shopcoords.y, shopcoords.z)) > 30.0) then
+						DrawMarker(27, shopcoords.x, shopcoords.y, shopcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					end
 				end
 			end
 
 			if (config.enableGasStations == true) then
 				for _, ltdcoords in pairs(config.ltdcoords) do
-				DrawMarker(27, ltdcoords.x, ltdcoords.y, ltdcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					if not (#(coords - vector3(ltdcoords.x, ltdcoords.y, ltdcoords.z)) > 30.0) then
+						DrawMarker(27, ltdcoords.x, ltdcoords.y, ltdcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					end
 				end
 			end
 
 			if (config.enableLiquor == true) then
 				for _, liquorcoords in pairs(config.liquorcoords) do
-				DrawMarker(27, liquorcoords.x, liquorcoords.y, liquorcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					if not (#(coords - vector3(liquorcoords.x, liquorcoords.y, liquorcoords.z)) > 30.0) then
+						DrawMarker(27, liquorcoords.x, liquorcoords.y, liquorcoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, .2, 255, 0, 0, 255, false, true, 2, false, nil, nil, false)
+					end
 				end
 			end
 
 			-- Bank Code
-			local coords = GetEntityCoords(GetPlayerPed(-1))
 			for _, bankcoords in pairs(config.bankcoords) do
 			if (config.enableBanks == true) then
-				if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, bankcoords.x, bankcoords.y, bankcoords.z, true) < 5.0 then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(bankcoords.x, bankcoords.y, bankcoords.z)) < 5.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the bank')
 					if IsControlJustReleased(0, 38) then -- E key
 						TriggerServerEvent('BadgerBankRobbery:SetActive', true)
@@ -82,7 +94,7 @@ Citizen.CreateThread(function()
 								model = "prop_ing_crowbar",
 							}
 						}, function(status)
-							if not status and not IsEntityDead(GetPlayerPed(-1)) then
+							if not status and not IsEntityDead(player) then
 								DisplayNotification('~g~Success: You have robbed the bank successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
 								TriggerServerEvent('BadgerBankRobbery:GiveRewardBank', true)
@@ -101,7 +113,7 @@ Citizen.CreateThread(function()
 			-- Ammunation Code
 			for _, ammunationcoords in pairs(config.ammunationcoords) do
 			if (config.enableAmmunations == true) then
-				if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, ammunationcoords.x, ammunationcoords.y, ammunationcoords.z) < 5.0 then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ammunationcoords.x, ammunationcoords.y, ammunationcoords.z)) < 5.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the Ammunation')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', ammunationcoords.alarm)
@@ -136,7 +148,7 @@ Citizen.CreateThread(function()
 								model = "prop_ing_crowbar",
 							}
 						}, function(status)
-							if not status and not IsEntityDead(GetPlayerPed(-1)) then
+							if not status and not IsEntityDead(player) then
 								DisplayNotification('~g~Success: You have robbed the Ammunation successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
 								TriggerServerEvent('BadgerBankRobbery:GiveRewardAmmo', true)
@@ -155,7 +167,7 @@ Citizen.CreateThread(function()
 			-- 24/7 Code
 			for _, shopcoords in pairs(config.shopcoords) do
 			if (config.enable247 == true) then
-				if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, shopcoords.x, shopcoords.y, shopcoords.z) < 5.0 then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(shopcoords.x, shopcoords.y, shopcoords.z)) < 5.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the 24/7')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', shopcoords.alarm)
@@ -190,7 +202,7 @@ Citizen.CreateThread(function()
 								model = "prop_ing_crowbar",
 							}
 						}, function(status)
-							if not status and not IsEntityDead(GetPlayerPed(-1)) then
+							if not status and not IsEntityDead(player) then
 								DisplayNotification('~g~Success: You have robbed the 24/7 successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
 								TriggerServerEvent('BadgerBankRobbery:GiveReward247', true)
@@ -209,7 +221,7 @@ Citizen.CreateThread(function()
 			-- LTD Code
 			for _, ltdcoords in pairs(config.ltdcoords) do
 			if (config.enableGasStations == true) then
-				if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, ltdcoords.x, ltdcoords.y, ltdcoords.z) < 5.0 then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(ltdcoords.x, ltdcoords.y, ltdcoords.z)) < 5.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the LTD Gas Station')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', ltdcoords.alarm)
@@ -244,7 +256,7 @@ Citizen.CreateThread(function()
 								model = "prop_ing_crowbar",
 							}
 						}, function(status)
-							if not status and not IsEntityDead(GetPlayerPed(-1)) then
+							if not status and not IsEntityDead(player) then
 								DisplayNotification('~g~Success: You have robbed the LTD Gas Station successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
 								TriggerServerEvent('BadgerBankRobbery:GiveRewardLTD', true)
@@ -263,7 +275,7 @@ Citizen.CreateThread(function()
 			-- Liquor Store Code
 			for _, liquorcoords in pairs(config.liquorcoords) do
 			if (config.enableLiquor == true) then
-				if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, liquorcoords.x, liquorcoords.y, liquorcoords.z) < 5.0 then
+				if (#(vector3(coords.x, coords.y, coords.z) - vector3(liquorcoords.x, liquorcoords.y, liquorcoords.z)) < 5.0) then
 					DisplayNotification('~r~Press the ~w~E ~r~key to rob the Liquor Store')
 					if IsControlJustReleased(0, 38) then -- E
 						TriggerServerEvent('PrintBR:PrintMessage', liquorcoords.alarm)
@@ -296,7 +308,7 @@ Citizen.CreateThread(function()
 								model = "prop_ing_crowbar",
 							}
 						}, function(status)
-							if not status and not IsEntityDead(GetPlayerPed(-1)) then
+							if not status and not IsEntityDead(player) then
 								DisplayNotification('~g~Success: You have robbed the Liquor Store successfully!')
 								TriggerServerEvent('PrintBR:PrintMessage', config.robberySuccess)
 								TriggerServerEvent('BadgerBankRobbery:GiveRewardLiq', true)
