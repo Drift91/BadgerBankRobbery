@@ -78,7 +78,7 @@ Citizen.CreateThread(function()
 							duration = (1000 * config.timeToRob), -- 1000ms * x seconds
 							label = config.robbingStr,
 							useWhileDead = false,
-							canCancel = false,
+							canCancel = true,
 							controlDisables = {
 								disableMovement = true,
 								disableCarMovement = true,
@@ -132,7 +132,7 @@ Citizen.CreateThread(function()
 							duration = (1000 * config.timeToRob), -- 1000ms * x seconds
 							label = config.robbingStr,
 							useWhileDead = false,
-							canCancel = false,
+							canCancel = true,
 							controlDisables = {
 								disableMovement = true,
 								disableCarMovement = true,
@@ -186,7 +186,7 @@ Citizen.CreateThread(function()
 							duration = (1000 * config.timeToRob), -- 1000ms * x seconds
 							label = config.robbingStr,
 							useWhileDead = false,
-							canCancel = false,
+							canCancel = true,
 							controlDisables = {
 								disableMovement = true,
 								disableCarMovement = true,
@@ -240,7 +240,7 @@ Citizen.CreateThread(function()
 							duration = (1000 * config.timeToRob), -- 1000ms * x seconds
 							label = config.robbingStr,
 							useWhileDead = false,
-							canCancel = false,
+							canCancel = true,
 							controlDisables = {
 								disableMovement = true,
 								disableCarMovement = true,
@@ -292,7 +292,7 @@ Citizen.CreateThread(function()
 							duration = (1000 * config.timeToRob), -- 1000ms * x seconds
 							label = config.robbingStr,
 							useWhileDead = false,
-							canCancel = false,
+							canCancel = true,
 							controlDisables = {
 								disableMovement = true,
 								disableCarMovement = true,
