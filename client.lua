@@ -3,8 +3,8 @@
 -------------------------
 
 robberyActive = false
-RegisterNetEvent('BadgerBankRobbery:IsActive:Return')
-AddEventHandler('BadgerBankRobbery:IsActive:Return', function(bool)
+RegisterNetEvent('BadgerBankRobbery:IsActive')
+AddEventHandler('BadgerBankRobbery:IsActive', function(bool)
 	robberyActive = bool
 end)
 
@@ -343,10 +343,3 @@ function DisplayNotification( text )
     AddTextComponentString( text )
     DrawNotification( false, false )
 end
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1000)
-		TriggerServerEvent('BadgerBankRobbery:IsActive')
-	end
-end)

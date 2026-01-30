@@ -35,15 +35,16 @@ end)
 
 --- Server ---
 robberyActive = false
-RegisterNetEvent('BadgerBankRobbery:IsActive')
-AddEventHandler('BadgerBankRobbery:IsActive', function()
-	-- Check if active or not
-	if robberyActive then
-		-- One is active
-		TriggerClientEvent('BadgerBankRobbery:IsActive:Return', source, true)
-	else
-		-- One is not active
-		TriggerClientEvent('BadgerBankRobbery:IsActive:Return', source, false)
+CreateThread(function()
+	while true do
+		Wait(1000)
+		if robberyActive then
+			-- One is active
+			TriggerClientEvent('BadgerBankRobbery:IsActive', -1, true)
+		else
+			-- One is not active
+			TriggerClientEvent('BadgerBankRobbery:IsActive', -1, false)
+		end
 	end
 end)
 
